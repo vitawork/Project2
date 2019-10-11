@@ -24,7 +24,7 @@ passport.use(
     {
       //options for the google strategy
       callbackURL: "/auth/google/redirect",
-      clientID: keys.google.clientID,
+      clientID: process.env.G_CLIENTID,
       clientSecret: keys.google.clientSecret
     },
     (accessToken, refreshToken, profile, done) => {
