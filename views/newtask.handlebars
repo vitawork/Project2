@@ -1,0 +1,87 @@
+<nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 navbar-expand-lg  ">
+  <a class="navbar-brand col-sm-3 col-md-2 mr-0 singoutBrand" href="#">WorkRoom 2.0</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="/dashboard">Dashboard |<span class="sr-only">(current)</span></a>
+      </li>
+      {{#if teacher}}
+      <li class="nav-item">
+        <a class="nav-link " href="/newtask">Add New Task |<span class="sr-only">(current)</span></a>
+      </li>
+      {{/if}}
+      {{#if coordinator}}
+      <li class="nav-item">
+        <a class="nav-link " href="/assignTask">Assign Task |<span class="sr-only">(current)</span></a>
+      </li>
+      {{/if}}
+      <li class="nav-item">
+        <a class="nav-link" href="/api/tasks">Tasks |<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/api/unassignedtasks">Unassigned Tasks |<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/api/assignedtasks">Assigned Tasks |<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/api/volunteers">Volunteers |<span class="sr-only">(current)</span></a>
+      </li>
+    </ul>
+  </div>
+  <ul class="navbar-nav px-3">
+    {{!-- <li class="nav-item text-nowrap">
+                <a class="nav-link" href="#">Sign in</a>
+            </li> --}}
+    <li class="nav-item text-nowrap">
+      {{#if user}}
+    <li><a class="nav-link singoutBrand" href="/auth/logout">Log out</a></li>
+    {{else}}
+    <li><a class="nav-link singoutBrand" href="/auth/login">Login</a></li>
+    {{/if}}
+    </li>
+  </ul>
+</nav>
+
+<div class="container">
+  <div class="d-flex justify-content-center h-100">
+    <div class="card">
+      <div class="card-header">
+        <h1>Task</h1>
+      </div>
+      <div class="card-body">
+        <form action="/api/newtask" method="POST">
+          <h5>Task</h5>
+          <div class="input-group form-group">
+            <input type="text" name="task_name" class="form-control" placeholder="Copies" required>
+          </div>
+          <h5>Description</h5>
+          <div class="input-group form-group">
+            <textarea class="form-control" name="description" aria-label="With textarea"></textarea>
+          </div>
+          <h5>Quantity</h5>
+          <div class="input-group form-group">
+            <input type="number" name="quantity" class="form-control" placeholder="10">
+          </div>
+          <h5>Due Date</h5>
+          <div class="form-group">
+            <input type="date" name="dueDate" max="3000-12-31" min="1000-01-01" class="form-control" required>
+          </div>
+          <h5>Estimated time</h5>
+          <div class="input-group form-group">
+            <input type="number" name="estimatedTime" class="form-control" placeholder="minutes" required>
+          </div>
+          <div class="form-group">
+            <input type="submit" value="Submit" class="btn float-right login_btn">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="/js/app.js"></script>
