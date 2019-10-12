@@ -24,15 +24,13 @@ passport.use(
     {
       //options for the google strategy
       callbackURL: "/auth/google/redirect",
-      clientID: "176663177048-46phpc9625ot8krk1qprvqm5fnjgbucq.apps.googleusercontent.com",
-      clientSecret: "PkaZ_GE4h8V9Ot_gfXWPol4q"
+      clientID: process.env.G_CLIENTID,
+      clientSecret: keys.google.clientSecret
     },
     (accessToken, refreshToken, profile, done) => {
       // passport callback function
       // console.log(profile);
       //send the new user to DB from google, cheking if exits first
-      
-  console.log("XXXXXXXX1googleXXXXXXX "+JSON.stringify(profile));
       db.User.findOne({
         where: {
           googleid: profile.id
@@ -42,8 +40,6 @@ passport.use(
           done(null, currentUser);
         } else {
           //checking if it is in the DB without googleid
-          
-  console.log("XXXXXXXX2googleXXXXXXX "+JSON.stringify(profile));
           db.User.findOne({
             where: {
               email: profile.emails[0].value
@@ -62,8 +58,6 @@ passport.use(
                   }
                 }
               ).then(function(quant) {
-                
-  console.log("XXXXXXXX3googleXXXXXXX ");
                 done(null, currentUser);
               });
             } else {
@@ -74,8 +68,6 @@ passport.use(
               // }).then(function(newUser) {
               //   // console.log("el nuevo user " + newUser.id); //hacer logging
               //   done(null, newUser);
-              
-  console.log("XXXXXXXX4googleXXXXXXX ");
               // });
               return done(null, false);
             }
@@ -91,10 +83,6 @@ passport.use(
     // Retrieve a User object from the database using Sequelize
     // by username
     //where: { username: username }
-    
-  console.log("XXXXXXXX1localXXXXXXX "+JSON.stringify(username));
-  
-  console.log("XXXXXXXX1localXXXXXXX "+JSON.stringify(password));
     db.User.findOne({ where: { username: username } }).then(res => {
       //console.log(res);
       // res is the response from Sequelize in the promise
@@ -111,8 +99,7 @@ passport.use(
         if (err) return done(err);
         if (res) {
           //console.log(user);
-         
-  console.log("XXXXXXXX2localXXXmatchXXXX ");
+
           usernamed = user.username;
           return done(null, user);
         } else {
