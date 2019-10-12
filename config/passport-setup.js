@@ -23,9 +23,10 @@ passport.use(
   new GoogleStrategy(
     {
       //options for the google strategy
-      callbackURL: "/auth/google/redirect",
-      clientID: process.env.G_CLIENTID,
-      clientSecret: keys.google.clientSecret
+      callbackURL: "http://workroom-project2.herokuapp.com/auth/google/redirect ",
+      clientID: "176663177048-46phpc9625ot8krk1qprvqm5fnjgbucq.apps.googleusercontent.com",
+      clientSecret: "keys.google.clientSecret",
+      proxi:true
     },
     (accessToken, refreshToken, profile, done) => {
       // passport callback function
