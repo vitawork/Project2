@@ -77,7 +77,7 @@ module.exports = function(app) {
     });
   });
 
-  app.get("/newtask", authCheck, function(req, res) {
+  app.get("/newtask", function(req, res) {
     res.render("newtask", checkrole(req.user));
   });
 
