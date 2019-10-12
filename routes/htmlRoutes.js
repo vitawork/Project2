@@ -2,8 +2,7 @@ var db = require("../models");
 
 const authCheck = (req, res, next) => {
   if (!req.user) {
-    // res.render("sigup");
-    res.redirect("/assignTask");
+    res.render("login");
   } else {
     next();
   }
@@ -58,7 +57,7 @@ module.exports = function(app) {
     res.render("signup");
   });
 
-  app.get("/assignTask",  function(req, res) {
+  app.get("/assignTask", authCheck, function(req, res) {
     var tohand = checkrole(req.user);
     db.Task.findAll({
       where: {
@@ -77,7 +76,7 @@ module.exports = function(app) {
     });
   });
 
-  app.get("/newtask", function(req, res) {
+  app.get("/newtask", authCheck, function(req, res) {
     res.render("newtask", checkrole(req.user));
   });
 

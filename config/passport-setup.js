@@ -101,7 +101,7 @@ passport.use(
           //console.log(user);
 
           usernamed = user.username;
-          return done(null, user, { message: "Iguales" });
+          return done(null, user);
         } else {
           return done(null, false, { message: "Incorrect password" });
         }
