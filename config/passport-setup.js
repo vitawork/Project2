@@ -31,6 +31,8 @@ passport.use(
       // passport callback function
       // console.log(profile);
       //send the new user to DB from google, cheking if exits first
+      
+  Console.log("XXXXXXXX1googleXXXXXXX "+JSON.stringify(profile));
       db.User.findOne({
         where: {
           googleid: profile.id
@@ -40,6 +42,8 @@ passport.use(
           done(null, currentUser);
         } else {
           //checking if it is in the DB without googleid
+          
+  Console.log("XXXXXXXX2googleXXXXXXX "+JSON.stringify(profile));
           db.User.findOne({
             where: {
               email: profile.emails[0].value
@@ -58,6 +62,8 @@ passport.use(
                   }
                 }
               ).then(function(quant) {
+                
+  Console.log("XXXXXXXX3googleXXXXXXX ");
                 done(null, currentUser);
               });
             } else {
@@ -68,6 +74,8 @@ passport.use(
               // }).then(function(newUser) {
               //   // console.log("el nuevo user " + newUser.id); //hacer logging
               //   done(null, newUser);
+              
+  Console.log("XXXXXXXX4googleXXXXXXX ");
               // });
               return done(null, false);
             }
@@ -83,6 +91,10 @@ passport.use(
     // Retrieve a User object from the database using Sequelize
     // by username
     //where: { username: username }
+    
+  Console.log("XXXXXXXX1localXXXXXXX "+JSON.stringify(username));
+  
+  Console.log("XXXXXXXX1localXXXXXXX "+JSON.stringify(password));
     db.User.findOne({ where: { username: username } }).then(res => {
       //console.log(res);
       // res is the response from Sequelize in the promise
@@ -99,7 +111,8 @@ passport.use(
         if (err) return done(err);
         if (res) {
           //console.log(user);
-
+         
+  Console.log("XXXXXXXX2localXXXmatchXXXX ");
           usernamed = user.username;
           return done(null, user);
         } else {
