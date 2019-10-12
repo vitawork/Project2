@@ -58,7 +58,7 @@ module.exports = function(app) {
     res.render("signup");
   });
 
-  app.get("/assignTask", authCheck, function(req, res) {
+  app.get("/assignTask",  function(req, res) {
     var tohand = checkrole(req.user);
     db.Task.findAll({
       where: {
