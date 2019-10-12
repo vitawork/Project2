@@ -11,13 +11,11 @@ module.exports = {
     password: null,
     database: "testdb",
     host: "localhost",
-    dialect: "mysql"
+    dialect: "mysql",
+    logging: false
   },
   production: {
-    username: process.env.USER || process.env.DB_USER,
-    password: process.env.PASSWORD || process.env.DB_PASSWORD,
-    database: "cheetahdb" || process.env.DB_DATABASE,
-    host: "localhost" || process.env.DB_HOST,
+    use_env_variable: "JAWSDB_URL",
     dialect: "mysql"
   }
 };
