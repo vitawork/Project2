@@ -14,8 +14,8 @@ router.get("/logout", (req, res) => {
 
 router.post("/login", (req, res, next) => {
   
-  Console.log("XXXXXXX1lXXXXXXXX "+JSON.stringify(req.body));
-  Console.log("XXXXXXXX1lXXXXXXX "+JSON.stringify(req.user));
+  console.log("XXXXXXX1lXXXXXXXX "+JSON.stringify(req.body));
+  console.log("XXXXXXXX1lXXXXXXX "+JSON.stringify(req.user));
   passport.authenticate("local", (err, user, info) => {
     if (user) {
       req.logIn(user, function(err) {
@@ -23,18 +23,14 @@ router.post("/login", (req, res, next) => {
           return next(err);
         }
         
-  Console.log("XXXXXXX2l/XXXXXXXX "+JSON.stringify(req.body));
-  Console.log("XXXXXXXX2l/XXXXXXX "+JSON.stringify(req.user));
-  
-  Console.log("XXXXXXXX2l/XXXXXXX "+JSON.stringify(user));
         return res.redirect("/");
       });
     } else {
       
-  Console.log("XXXXXXX2lloginXXXXXXXX "+JSON.stringify(req.body));
-  Console.log("XXXXXXXX2lloginXXXXXXX "+JSON.stringify(req.user));
+  console.log("XXXXXXX2lloginXXXXXXXX "+JSON.stringify(req.body));
+  console.log("XXXXXXXX2lloginXXXXXXX "+JSON.stringify(req.user));
   
-  Console.log("XXXXXXXX2lloginXXXXXXX "+JSON.stringify(user));
+  console.log("XXXXXXXX2lloginXXXXXXX "+JSON.stringify(user));
       return res.render("login", info);
     }
   })(req, res, next);
@@ -53,8 +49,8 @@ router.get(
   "/google/redirect",
   passport.authenticate("google", { failureRedirect: "/signup" }),
   (req, res) => {
-    Console.log("XXXXXXX2gXXXXXXXX "+JSON.stringify(req.body));
-    Console.log("XXXXXXXX2gXXXXXXX "+JSON.stringify(req.user));
+    console.log("XXXXXXX2gXXXXXXXX "+JSON.stringify(req.body));
+    console.log("XXXXXXXX2gXXXXXXX "+JSON.stringify(req.user));
     res.redirect("/");
   }
 );
