@@ -23,10 +23,9 @@ passport.use(
   new GoogleStrategy(
     {
       //options for the google strategy
-      callbackURL: "http://workroom-project2.herokuapp.com/auth/google/redirect ",
+      callbackURL: "/auth/google/redirect",
       clientID: "176663177048-46phpc9625ot8krk1qprvqm5fnjgbucq.apps.googleusercontent.com",
-      clientSecret: "keys.google.clientSecret",
-      proxi:true
+      clientSecret: "keys.google.clientSecret"
     },
     (accessToken, refreshToken, profile, done) => {
       // passport callback function
@@ -102,7 +101,7 @@ passport.use(
           //console.log(user);
 
           usernamed = user.username;
-          return done(null, user);
+          return done(null, user, { message: "Iguales" });
         } else {
           return done(null, false, { message: "Incorrect password" });
         }
