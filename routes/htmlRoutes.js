@@ -27,7 +27,7 @@ function checkrole(user) {
 
 module.exports = function(app) {
   // Load index page
-  app.get("/",  function(req, res) {
+  app.get("/", authCheck, function(req, res) {
     db.User.count({
       where: { role: "Volunteer" }
     }).then(amount => {
