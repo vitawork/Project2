@@ -2,7 +2,8 @@ var db = require("../models");
 
 const authCheck = (req, res, next) => {
   if (!req.user) {
-    res.render("signup");
+    // res.render("sigup");
+    res.redirect("/api/tasks");
   } else {
     next();
   }
