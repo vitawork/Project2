@@ -1,9 +1,9 @@
 module.exports = {
   development: {
-    username:  process.env.HERUSER || process.env.USER,
-    password: process.env.HERPASSWORD || process.env.PASSWORD ,
-    database:  process.env.DB_DATABASE  || "cheetahdb",
-    host:  process.env.DB_HOST || "localhost",
+    username:  "ties3yik7jlhsysn",
+    password: "tvhmwesh6nw7lths" ,
+    database:  "vvvmugfmw7thrhdj",
+    host:  "s3lkt7lynu0uthj8.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
     dialect: "mysql"
   },
   test: {
