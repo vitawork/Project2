@@ -2,7 +2,7 @@ var db = require("../models");
 
 const authCheck = (req, res, next) => {
   if (!req.user) {
-    res.render("login");
+    res.render("signup");
   } else {
     next();
   }
