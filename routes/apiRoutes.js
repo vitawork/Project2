@@ -133,7 +133,7 @@ module.exports = function(app) {
       description: req.body.description,
       quantity: req.body.quantity,
       dueDate: req.body.dueDate,
-      estimatedTime: req.body.estimatedTime * 100,
+      estimatedTime: req.body.estimatedTime,
       state: "Unassigned"
     }).then(function(task) {
       db.UserTask.create({
